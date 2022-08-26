@@ -1,0 +1,259 @@
+{% extends 'base.html' %}
+{% block content %}
+            <div class="chapterbody">
+                <div class="postarea">
+                    <article id="post-118258" class="post-118258 hentry" itemscope="itemscope"
+                        itemtype="http://schema.org/CreativeWork">
+                        {% for chapter in whole_chapter.items %}
+                        <div class="headpost">
+
+                            <h1 class="entry-title" itemprop="name">Chapter {{ chapter.num }}</h1>
+                            <div class="allc">All chapters are in <a
+                                    href="{{ url_for('comic', comic_title=comic.title) }}">{{ comic.title }}</a></div>
+                        </div>
+                        <div class='socialts'>
+                            <a href="https://www.facebook.com/sharer/sharer.php?u=https://www.manhuareads.com/comic/{{ comic.title }}/&amp;t={{ comic.title }}"
+                                target="_blank" class="fb">
+                                <i class="fab fa-facebook-f"></i>
+                                <span>Facebook</span>
+                            </a>
+                            <a href="https://www.twitter.com/intent/tweet?url=https://www.manhuareads.com/comic/{{ comic.title }}/&amp;text={{ comic.title }}"
+                                target="_blank" class="twt">
+                                <i class="fab fa-twitter"></i>
+                                <span>Twitter</span>
+                            </a>
+                            <a href="whatsapp://send?text={{ comic.title }} https://www.manhuareads.com/comic/{{ comic.title }}/"
+                                target="_blank" class="wa">
+                                <i class="fab fa-whatsapp"></i>
+                                <span>WhatsApp</span>
+                            </a>
+                            <a href="https://pinterest.com/pin/create/button/?url=https://www.manhuareads.com/comic/{{ comic.title }}/&amp;media=https://www.manhuareads.com/{{ comic.image_link }}&amp;description={{ comic.title }}"
+                                target="_blank" class="pntrs">
+                                <i class="fab fa-pinterest-p"></i>
+                                <span>Pinterest</span>
+                            </a>
+                        </div>
+                        <div class="ts-breadcrumb bixbox">
+                            <ol itemscope="" itemtype="http://schema.org/BreadcrumbList">
+                                <li itemprop="itemListElement" itemscope="" itemtype="http://schema.org/ListItem">
+                                    <a itemprop="item" href="{{ url_for('index') }}"><span itemprop="name">ManhuaReads</span></a>
+                                    <meta itemprop="position" content="1">
+                                </li>
+                                ›
+                                <li itemprop="itemListElement" itemscope="" itemtype="http://schema.org/ListItem">
+                                    <a itemprop="item"
+                                        href="{{ url_for('comic', comic_title=comic.title) }}"><span
+                                            itemprop="name">{{ comic.title }}</span></a>
+                                    <meta itemprop="position" content="2">
+                                </li>
+                                ›
+                                <li itemprop="itemListElement" itemscope="" itemtype="http://schema.org/ListItem">
+                                    <a itemprop="item"
+                                        href="{{ url_for('comic_chapter', comic_title=comic.title, chapter_num=chapter.num) }}"><span
+                                            itemprop="name">{{ comic.title }} Chapter {{ chapter.num }}</span></a>
+                                    <meta itemprop="position" content="3">
+                                </li>
+                            </ol>
+                        </div>
+                        <div class="entry-content entry-content-single maincontent" itemprop="description">
+                            <div class="chdesc">
+                                <p>
+                                    Read the latest manga <b> {{ comic.title }} Chapter No. {{ chapter.num }} </b> at <b> ManhuaReads
+                                    </b>. Manga <b> {{ comic.title }} </b> is always kept up to date at <b> ManhuaReads </b>.
+                                    Don't forget to read all the other manga updates <a href="{{ url_for('index') }}"><b>here</b></a>. A list of all available <b>ManhuaReads'</b> manga collections is in the Manga List menu. </p>
+                            </div>
+
+                            <div class="chnav ctop">
+                                <span class="selector slc l">
+                                    <div class="nvx">
+                                        <select name="chapter" id="chapter"
+                                            onchange="this.options[this.selectedIndex].value&&window.open(this.options[this.selectedIndex].value,'_self')">
+                                            <option value="">Select Chapter</option>
+                                            {% for chapt in comic.chapters %}
+                                            <option value="{{ chapt.num }}">Chapter {{ chapt.num }}</option>
+                                            {% endfor %}
+                                        </select>
+                                    </div>
+                                </span>
+                                <span class="navlef">
+                                    <span class="npv r">
+                                        <div class="nextprev">
+                                            {% if whole_chapter.has_prev %}
+                                                <a href="{{ url_for('comic_chapter', comic_title=comic.title, chapter_num=whole_chapter.prev_num) }}" class="ch-prev-btn" rel="prev"><i class="fas fa-angle-left"></i>Prev <i class="fa fa-chevron-left" aria-hidden="true"></i></a>
+                                            {% else %}
+                                                <a href class="ch-prev-btn disabled" rel="prev"><i class="fas fa-angle-left"></i>Prev <i class="fa fa-chevron-left" aria-hidden="true"></i></a>
+                                            {% endif %}
+                                            {% if whole_chapter.has_next %}
+                                                <a href="{{ url_for('comic_chapter', comic_title=comic.title, chapter_num=whole_chapter.next_num) }}" class="ch-next-btn" rel="next">Next  <i class="fas fa-angle-right"></i></a>
+                                            {% else %}
+                                            <a href class="ch-next-btn disabled" rel="next">Next  <i class="fas fa-angle-right"></i></a>
+                                            {% endif %}
+                                        </div>
+                                    </span>
+                                    <span class="amob nodlx">
+                                    </span>
+                                </span>
+                            </div>
+                            <div class="kln"></div>
+                            <div id="readerarea" class="rdminimal">
+                                <div class='code-block code-block-21'
+                                    style='margin: 8px auto; text-align: center; display: block; clear: both;'>
+
+                                    <!-- <div class="asurascans.rights">
+                                        <img src="https://www.asurascans.com/wp-content/uploads/2021/04/page100-10.jpg"
+                                            style="display: none;" width="1142" height="1348"
+                                            class="alignnone size-full asurascans" />
+                                    </div> -->
+                                </div>
+                                    {% for image in chapter.images.split(',') %}
+                                <p><img src="{{ url_for('static', filename=image) }}" alt=""
+                                        width="1200" height="800" class="alignnone size-full wp-image-118259" />
+                                </p>
+                                {% endfor %}
+                                <!-- <p><a href="https://discord.com/invite/asurascans" target="_blank"
+                                        rel="noopener noreferrer"><img loading="lazy"
+                                            src="https://www.asurascans.com/wp-content/uploads/2022/01/ENDING-PAGE.jpg"
+                                            alt="" width="720" height="324"
+                                            class="alignnone size-full wp-image-22408" />
+                                        <div class='ai-viewports ai-viewport-3 ai-insert-18-18107498'
+                                            style='margin: 8px auto; text-align: center; display: block; clear: both;'
+                                            data-insertion-position='prepend' data-selector='.ai-insert-18-18107498'
+                                            data-insertion-no-dbg
+                                            data-code='PGRpdiBjbGFzcz0nY29kZS1ibG9jayBjb2RlLWJsb2NrLTE4JyBzdHlsZT0nbWFyZ2luOiA4cHggYXV0bzsgdGV4dC1hbGlnbjogY2VudGVyOyBkaXNwbGF5OiBibG9jazsgY2xlYXI6IGJvdGg7Jz4KPCEtLSBQaG9uZSAvLyBCZXR3ZWVuIGltYWdlcyAtLT4KCjxkaXYgZGF0YS1wdy1tb2JpPSJtZWRfcmVjdF9idGYiPgo8L2Rpdj4KPC9kaXY+Cg=='
+                                            data-block='18'></div>
+                                        <div class='ai-viewports ai-viewport-1 ai-viewport-2 ai-insert-17-27331102'
+                                            style='margin: 8px auto; text-align: center; display: block; clear: both;'
+                                            data-insertion-position='prepend' data-selector='.ai-insert-17-27331102'
+                                            data-insertion-no-dbg
+                                            data-code='PGRpdiBjbGFzcz0nY29kZS1ibG9jayBjb2RlLWJsb2NrLTE3JyBzdHlsZT0nbWFyZ2luOiA4cHggYXV0bzsgdGV4dC1hbGlnbjogY2VudGVyOyBkaXNwbGF5OiBibG9jazsgY2xlYXI6IGJvdGg7Jz4KPCEtLSBEZXNrdG9wLCBUYWJsZXQgLy8gQmV0d2VlbiBpbWFnZXMgLS0+Cgo8ZGl2IGRhdGEtcHctZGVzaz0ibWVkX3JlY3RfYnRmIj4KPC9kaXY+CjwvZGl2Pgo='
+                                            data-block='17'></div>
+                                    </a></p> -->
+                            </div>
+                            <div class="kln"></div>
+                            <div class="chnav cbot">
+                                <span class="selector slc l">
+                                    <div class="nvx">
+                                        <select name="chapter" id="chapter"
+                                            onchange="this.options[this.selectedIndex].value&&window.open(this.options[this.selectedIndex].value,'_self')">
+                                            <option value="">Select Chapter</option>
+                                            {% for chapt in comic.chapters %}
+                                            <option value="{{ chapt.num }}">Chapter {{ chapt.num }}</option>
+                                            {% endfor %}
+                                        </select>
+                                    </div>
+                                </span>
+                                <span class="amob">
+                                    <span class="npv r">
+                                        <div class="nextprev">
+                                            {% if whole_chapter.has_prev %}
+                                                <a href="{{ url_for('comic_chapter', comic_title=comic.title, chapter_num=whole_chapter.prev_num) }}" class="ch-prev-btn" rel="prev"><i class="fas fa-angle-left"></i>Prev <i class="fa fa-chevron-left" aria-hidden="true"></i></a>
+                                            {% else %}
+                                                <a href class="ch-prev-btn disabled" rel="prev"><i class="fas fa-angle-left"></i>Prev <i class="fa fa-chevron-left" aria-hidden="true"></i></a>
+                                            {% endif %}
+                                            {% if whole_chapter.has_next %}
+                                                <a href="{{ url_for('comic_chapter', comic_title=comic.title, chapter_num=whole_chapter.next_num) }}" class="ch-next-btn" rel="next">Next  <i class="fas fa-angle-right"></i></a>
+                                            {% else %}
+                                            <a href class="ch-next-btn disabled" rel="next">Next  <i class="fas fa-angle-right"></i></a>
+                                            {% endif %}
+                                        </div>
+                                    </span>
+                                </span>
+                            </div>
+                        </div>
+                        <div class="chaptertags">
+                            <p>tags: {% for tag in chapter.tags.split(',') %}{{ tag }}{% endfor %},
+                                <time class="entry-date" datetime="{{ chapter.release }}"
+                                    itemprop="datePublished" pubdate>August 5, 2022</time>, <span
+                                    itemprop="author">{{ comic.author }}</span>
+                            </p>
+                        </div>
+                        {% endfor %}
+                    </article>
+
+                    <div class="bixbox">
+                        <div class="releases">
+                            <h2><span>Related Series</span></h2>
+                        </div>
+                        <div class="listupd">
+                            {% for item in related %}
+                            <div class="bs">
+                                <div class="bsx">
+                                    <a href="{{ url_for('comic', comic_title=item.title) }}"
+                                        title="{{ item.title }}">
+                                        <div class="limit">
+                                            <div class="ply"></div>
+                                            {% if item.status =='Dropped' %}
+                                            <span class="status Dropped">Dropped</span>
+                                            {% else %}
+                                            {% endif %}
+                                            <span class="type {{ item.type }}">{{ item.type }}</span> <img
+                                                src="{{ item.image_link }}"
+                                                class="ts-post-image wp-post-image attachment-medium size-medium"
+                                                loading="lazy" />
+                                        </div>
+                                        <div class="bigor">
+                                            <div class="tt">
+                                                {{ item.title }} </div>
+                                            <div class="adds">
+                                                <div class="epxs">Chapter 22</div>
+                                                <div class="rt">
+                                                    <div class="rating">
+                                                        <div class="rating-prc">
+                                                            <div class="rtp">
+                                                                <div class="rtb"><span style="width: {{ item.ratings * 10 }}%"></span></div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="numscore">{{ item.ratings }}</div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </a>
+                                </div>
+                            </div>
+                            {% endfor %}
+                        </div>
+                    </div>
+
+                    <!-- Comment Section -->
+                    <div id="comments" class="bixbox comments-area">
+                        <div class="releases">
+                            <h2><span>Comment</span></h2>
+                        </div>
+                        <div class="cmt commentx">
+                            <div id="comments" class="comments-area">
+                                <div id="disqus_thread"></div>
+                                <!-- <script defer>
+                                    var disqus_config = function () {
+                                        this.page.url = "https://www.asurascans.com/your-talent-is-mine-chapter-38/";
+                                        this.page.identifier = "https://www.asurascans.com/your-talent-is-mine-chapter-38/118258 https://www.asurascans.com/?p=118258";
+                                        this.page.title = "Your Talent is Mine Chapter 38";
+                                    };
+                                    (function () {
+                                        var d = document, s = d.createElement('script');
+                                        s.src = 'https://asurascans-com-1.disqus.com/embed.js';
+                                        s.defer = 'defer';
+                                        s.setAttribute('data-timestamp', +new Date());
+                                        (d.head || d.body).appendChild(s);
+                                    })();
+                                </script>
+                                <noscript>Please enable JavaScript to view comments powered by Disqus.</noscript> -->
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <script>ts_reader.run({ "noimagehtml": "<h2>NO IMAGE YET<\/h2>", "prevUrl": "https:\/\/www.asurascans.com\/your-talent-is-mine-chapter-37\/", "nextUrl": "https:\/\/www.asurascans.com\/your-talent-is-mine-chapter-39\/", "mode": "full", "sources": [{ "source": "Server 1", "images": ["https:\/\/www.asurascans.com\/wp-content\/uploads\/2021\/04\/page100-10.jpg", "https://www.asurascans.com/your-talent-is-mine-chapter-38/\/\/www.asurascans.com\/wp-content\/uploads\/2022\/08\/00-4.png", "https://www.asurascans.com/your-talent-is-mine-chapter-38/\/\/www.asurascans.com\/wp-content\/uploads\/2022\/08\/01.png", "https://www.asurascans.com/your-talent-is-mine-chapter-38/\/\/www.asurascans.com\/wp-content\/uploads\/2022\/08\/02.png", "https://www.asurascans.com/your-talent-is-mine-chapter-38/\/\/www.asurascans.com\/wp-content\/uploads\/2022\/08\/03.png", "https://www.asurascans.com/your-talent-is-mine-chapter-38/\/\/www.asurascans.com\/wp-content\/uploads\/2022\/08\/04.png", "https://www.asurascans.com/your-talent-is-mine-chapter-38/\/\/www.asurascans.com\/wp-content\/uploads\/2022\/08\/05.png", "https://www.asurascans.com/your-talent-is-mine-chapter-38/\/\/www.asurascans.com\/wp-content\/uploads\/2022\/08\/06.png", "https://www.asurascans.com/your-talent-is-mine-chapter-38/\/\/www.asurascans.com\/wp-content\/uploads\/2022\/08\/07.png", "https://www.asurascans.com/your-talent-is-mine-chapter-38/\/\/www.asurascans.com\/wp-content\/uploads\/2022\/08\/08.png", "https://www.asurascans.com/your-talent-is-mine-chapter-38/\/\/www.asurascans.com\/wp-content\/uploads\/2022\/08\/09.png", "https://www.asurascans.com/your-talent-is-mine-chapter-38/\/\/www.asurascans.com\/wp-content\/uploads\/2022\/08\/10.png", "https:\/\/www.asurascans.com\/wp-content\/uploads\/2022\/01\/ENDING-PAGE.jpg"] }], "lazyload": false, "defaultSource": "Server 1", "lazyloadPlaceHolder": "https:\/\/www.asurascans.com\/wp-content\/themes\/mangastream\/assets\/img\/readerarea.svg", "progressBar": false, "contentmode": "minimal" });</script>
+            <script>
+                var post_id = 50283;
+                var chapter_id = 118258;
+
+                loadChList();
+
+                jQuery(document).ready(function () { jQuery.ajax({ url: ajaxurl, type: 'post', data: { action: 'dynamic_view_ajax', post_id: chapter_id }, success: function (response) { } }); });
+
+                jQuery(document).ready(function () {
+                    HISTORY.push(118258, { "manga_ID": "50283", "manga_title": "Your Talent is Mine", "chapter_ID": 118258, "chapter_title": "Your Talent is Mine Chapter 38", "chapter_permalink": "https:\/\/www.asurascans.com\/your-talent-is-mine-chapter-38\/" });
+                });
+            </script>
+{% endblock %}

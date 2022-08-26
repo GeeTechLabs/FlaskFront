@@ -1,0 +1,7 @@
+__pycache__/
+FlaskEnv/
+SpiderEnv/
+Images.txt
+loop_db.py
+spider.py
+config.py

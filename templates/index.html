@@ -1,0 +1,324 @@
+{% extends 'base.html' %}
+            {% block content %}
+            <div class="postbody">
+                <!-- Start Of Slider & Trending Wrapper Section -->
+                <div class="slidtop">
+
+                    <!-- Start Of Slider Section -->
+                    <div class="loop owl-carousel full">
+                        {% for item in slider %}
+                        <div class="slide-item full">
+                            <div class="slide-bg">
+                                <img src="{{ url_for('static', filename=item.image_link) }}" />
+                            </div>
+                            <div class="slide-shadow"></div>
+                            <div class="slide-content">
+                                <div class="poster" style="position:relative">
+                                    <a href="{{ url_for('comic', comic_title=item.title) }}"><img
+                                            src="{{ url_for('static', filename=item.image_link) }}"
+                                            class="ts-post-image wp-post-image attachment-medium size-medium"
+                                            loading="lazy" /></a>
+                                </div>
+                                <div class="info-left">
+                                    <div class="title">
+                                        <div class="rating">
+                                            <div class="vote">
+                                                <div class="site-vote">
+                                                    <span class="fa fa-star"><span>{{ item.ratings }}</span></span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <span class="ellipsis"><a
+                                                href="{{ url_for('comic', comic_title=item.title) }}">{{ item.title }}</a></span>
+                                        <span class="release-year">{{ item.type }}</span>
+                                    </div>
+                                    <div class="extras">
+                                        <div class="extra-category">
+                                            {% for genre in item.genres %}
+                                            <a href="{{ url_for ('genres', genre_title=genre.name.lower() ) }}"
+                                                rel="tag">{{ genre.name }}</a>,{% endfor %}</div>
+                                    </div>
+                                    <div class="excerpt">
+                                        <span class="title">Summary</span>
+                                        <p class="story">
+                                        <p>{{ item.description }}</p>
+                                        </p>
+                                    </div>
+                                    <div class="cast">
+                                        <span class="director"><strong>Status:</strong> {{ item.status }}</span>
+                                        <span class="actor"><strong>Author:</strong> {{ item.author }}</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        {% endfor %}
+                    </div>
+                    <script type="text/javascript">
+                        $(document).ready(function () {
+                            $('.loop').owlCarousel({
+                                center: true,
+                                loop: true,
+                                nav: true,
+                                //animateOut: 'fadeOut',
+                                navText: ["<span class='prev icon-angle-left'></span>", "<span class='next icon-angle-right'></span>"],
+                                margin: 0,
+                                autoplay: true,
+                                autoplayTimeout: 5000,
+                                autoplayHoverPause: true,
+                                responsive: {
+                                    0: {
+                                        items: 1,
+                                        stagePadding: 0,
+                                    }
+                                }
+                            });
+                        });
+                    </script>
+                    <!-- End Of Slider Section -->
+
+                    <!-- Start Of Trending Section -->
+                    <div class="trending">
+                        <div class="tdb">
+                            <a href="{{ url_for('comic', comic_title=trend.title) }}">
+                                <div class="crown"></div>
+                                <div class="textbg blxc">
+                                    <div class="bghover">
+                                        <span class="numa">ManhuaReads <b>Trending</b> This Week</span>
+                                        <span class="numb"><b>{{ trend.title }}</b></span>
+                                    </div>
+                                </div>
+                                <div class="imgxa">
+                                    <div class="imgxb"
+                                        style="background-image: url(http://127.0.0.1:14600{{ url_for('static', filename=trend.image_link) }});">
+                                    </div>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+                    <!-- End Of Trending Section -->
+                </div>
+                <!-- End Of Slider & Trending Wrapper Section -->
+
+                <!-- Start Of Popular Today -->
+                <div class="bixbox hothome">
+                    <div class="releases">
+                        <h2>Popular Today</h2>
+                    </div>
+                    <div class="listupd">
+                        {% for item in popular %}
+                        <div class="bs">
+                            <div class="bsx">
+                                <a href="{{ url_for('comic', comic_title=item.title) }}"
+                                    title="{{ item.title }}">
+                                    <div class="limit">
+                                        <div class="ply"></div>
+                                        {% if item.status == 'Dropped' %}
+                                        <span class="status Dropped">Dropped</span>
+                                        {% else %}
+                                        {% endif %}
+                                        <span class="type {{ item.type }}">{{ item.type }}</span> <img
+                                            src="{{ url_for('static', filename=item.image_link) }}"
+                                            class="ts-post-image wp-post-image attachment-medium size-medium"
+                                            loading="lazy" />
+                                    </div>
+                                    <div class="bigor">
+                                        <div class="tt">
+                                            {{ item.title }} </div>
+                                        <div class="adds">
+                                            <div class="epxs">Chapter {{ item.last_chapter }}</div>
+                                            <div class="rt">
+                                                <div class="rating">
+                                                    <div class="rating-prc">
+                                                        <div class="rtp">
+                                                            <div class="rtb"><span style="width: {{ item.ratings * 10 }}%;"></span></div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="numscore">{{ item.ratings }}</div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </a>
+                            </div>
+                        </div>
+                        {% endfor %}
+                    </div>
+                </div>
+                <!-- End Of Popular Today -->
+
+
+                <!-- Start Of Latest Update -->
+                <div class="bixbox">
+                    <div class="releases">
+                        <h2>Latest Update</h2><a class="vl" href="{{ url_for('comics') }}">View All</a>
+                    </div>
+                    <div class="listupd">
+                        {% for item in latest.items %}
+                        <div class="utao styletwo">
+                            <div class="uta">
+                                <div class="imgu">
+                                    <a rel="63657" class="series"
+                                        href="{{ url_for('comic', comic_title=item.title) }}"
+                                        title="{{ item.title }}"><img
+                                            src="{{ url_for('static', filename=item.image_link) }}"
+                                            class="ts-post-image wp-post-image attachment-post-thumbnail size-post-thumbnail"
+                                            loading="lazy" /> <span class="hot">H</span> </a>
+                                </div>
+                                <div class="luf">
+                                    <a class="series" href="{{ url_for('comic', comic_title=item.title) }}"
+                                        title="{{ item.title }}">
+                                        <h4>{{ item.title }}</h4>
+                                    </a>
+                                    <ul class="{{ item.type }}">
+                                        {% for chapter in item.chapters[0:3]|reverse %}
+                                        <li><a href="{{ url_for('comic_chapter', comic_title=item.title, chapter_num=chapter.num) }}">Chapter
+                                            {{ chapter.num }}</a><span>{{ chapter.release }} ago</span></li>
+                                        {% endfor %}
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                        {% endfor %}
+                        <div class="hpage">
+                            <!-- <a href="page/2" class="r">Next <i class="fa fa-chevron-right" aria-hidden="true"></i></a> -->
+
+							{% if latest.has_prev %}
+                            <a href="{{ url_for('index', page=latest.prev_num) }}" class="l">Previous <i class="fa fa-chevron-left" aria-hidden="true"></i></a>
+                            {% endif %}
+                        {% if latest.has_next %}
+                                <a href="{{ url_for('index', page=latest.next_num) }}" class="r">Next <i class="fa fa-chevron-right" aria-hidden="true"></i></a>
+                            {% endif %}
+                        </div>
+                    </div>
+                </div>
+                <!-- End Of Latest Update -->
+
+
+            </div>
+            <div id="sidebar">
+                <div class="section">
+                    <div class="releases">
+                        <h3>Popular</h3>
+                    </div>
+                    <div class="ts-wpop-series-gen">
+                        <ul class="ts-wpop-nav-tabs">
+                            <li class="active"><a class="ts-wpop-tab" data-range="weekly">Weekly</a></li>
+                            <li><a class="ts-wpop-tab" data-range="monthly">Monthly</a></li>
+                            <li><a class="ts-wpop-tab" data-range="alltime">All</a></li>
+                        </ul>
+                    </div>
+                    <div id="wpop-items">
+                        <div class='serieslist pop wpop wpop-weekly'>
+                            <ul>
+                                {% for item in popular %}
+                                <li>
+                                    <div class="ctr">{{ loop.count }}</div>
+                                    <div class="imgseries">
+                                        <a class="series"
+                                            href="{{ url_for('comic', comic_title=item.title) }}"
+                                            rel="121231">
+                                            <img src="{{ url_for('static', filename=item.image_link) }}"
+                                                class="ts-post-image wp-post-image attachment-medium size-medium"
+                                                loading="lazy" /> </a>
+                                    </div>
+                                    <div class="leftseries">
+                                        <h2>
+                                            <a class="series"
+                                                href="{{ url_for('comic', comic_title=item.title) }}"
+                                                rel="121231">{{ item.title }}</a>
+                                        </h2>
+                                        <span><b>Genres</b>: {% for genre in item.genres %}
+                                            <a href="{{ url_for('genres', genre_title=genre.name.lower()) }}"
+                                                rel="tag">{{ genre.name }}</a>,{% endfor %} </span>
+                                        <div class="rt">
+                                            <div class="rating">
+                                                <div class="rating-prc">
+                                                    <div class="rtp">
+                                                        <div class="rtb"><span style="width:{{ item.ratings * 10 }}%"></span></div>
+                                                    </div>
+                                                </div>
+                                                <div class="numscore">{{ item.ratings }}</div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </li>
+                                {% endfor %}
+                            </ul>
+                        </div>
+                        <div class='serieslist pop wpop wpop-monthly'>
+                            <ul>
+                                {% for item in monthly %}<b>{{ loop.count }}</b>
+                                <li>
+                                    <div class="ctr">1</div>
+                                    <div class="imgseries">
+                                        <a class="series"
+                                            href="{{ url_for('comic', comic_title=item.title) }}" rel="40871">
+                                            <img src="{{ url_for('static', filename=item.image_link) }}"
+                                                class="ts-post-image wp-post-image attachment-medium size-medium"
+                                                loading="lazy" /> </a>
+                                    </div>
+                                    <div class="leftseries">
+                                        <h2>
+                                            <a class="series"
+                                                href="{{ url_for('comic', comic_title=item.title) }}"
+                                                rel="40871">{{ item.title }}</a>
+                                        </h2>
+                                        <span><b>Genres</b>: {% for genre in item.genres %}
+                                            <a href="{{ url_for('genres', genre_title=genre.name.lower()) }}"
+                                                rel="tag">{{ genre.name }}</a>, {% endfor %}</span>
+                                        <div class="rt">
+                                            <div class="rating">
+                                                <div class="rating-prc">
+                                                    <div class="rtp">
+                                                        <div class="rtb"><span style="width: {{ item.ratings * 10 }}%"></span></div>
+                                                    </div>
+                                                </div>
+                                                <div class="numscore">{{ item.ratings }}</div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </li>
+                                {% endfor %}
+                            </ul>
+                        </div>
+                        <div class='serieslist pop wpop wpop-alltime'>
+                            <ul>
+                                {% for item in alltime %}
+                                <li>
+                                    <div class="ctr">1</div>
+                                    <div class="imgseries">
+                                        <a class="series"
+                                            href="{{ url_for('comic', comic_title=item.title) }}" rel="40871">
+                                            <img src="{{ url_for('static', filename=item.image_link) }}"
+                                                class="ts-post-image wp-post-image attachment-medium size-medium"
+                                                loading="lazy" /> </a>
+                                    </div>
+                                    <div class="leftseries">
+                                        <h2>
+                                            <a class="series"
+                                                href="{{ url_for('comic', comic_title=item.title) }}"
+                                                rel="40871">{{ item.title }}</a>
+                                        </h2>
+                                        <span><b>Genres</b>: {% for genre in item.genres %}
+                                            <a href="{{ url_for('genres', genre_title=genre.name.lower()) }}"
+                                                rel="tag">{{ genre.name }}</a>, {% endfor %}</span>
+                                        <div class="rt">
+                                            <div class="rating">
+                                                <div class="rating-prc">
+                                                    <div class="rtp">
+                                                        <div class="rtb"><span style="width:{{ item.ratings * 10}}%"></span></div>
+                                                    </div>
+                                                </div>
+                                                <div class="numscore">{{ item.ratings }}</div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </li>
+                                {% endfor %}
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <script>ts_popular_widget.run(1661208919);</script>
+            </div>
+            {% endblock %}

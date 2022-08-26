@@ -1,0 +1,411 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class="postbody">
+	<article id="post-22539" class="post-22539 hentry" itemscope="itemscope"
+		itemtype="http://schema.org/CreativeWorkSeries">
+		<div class="ts-breadcrumb bixbox">
+			<ol itemscope="" itemtype="http://schema.org/BreadcrumbList">
+				<li itemprop="itemListElement" itemscope="" itemtype="http://schema.org/ListItem">
+					<a itemprop="item" href="{{ url_for('index') }}"><span itemprop="name">ManhuaRead</span></a>
+					<meta itemprop="position" content="1">
+				</li>
+				›
+				<!-- Add url_for() with parameters and property ids -->
+				<li itemprop="itemListElement" itemscope="" itemtype="http://schema.org/ListItem">
+					<a itemprop="item" href="{{ url_for('comic', comic_title=comic.title) }}"><span itemprop="name">{{ comic.title }}</span></a>
+					<meta itemprop="position" content="2">
+				</li>
+			</ol>
+		</div>
+		<div class="bixbox animefull">
+			<div class="bigcontent nobigcover">
+				<div class="thumbook">
+					<div class="thumb" itemprop="image" itemscope itemtype="https://schema.org/ImageObject">
+						<img width="720" height="972" src="{{ url_for('static', filename=comic.image_link) }}"
+							class="attachment- size- wp-post-image" alt="{{ comic.title }}"
+							loading="lazy" title="{{ comic.title }}" itemprop="image" />
+					</div>
+					<div class="rt">
+						<div data-id="22539" class="bookmark"><i class="far fa-bookmark" aria-hidden="true"></i>
+							Bookmark </div>
+						<div class="bmc">Followed by {{ comic.followed_by }} people</div>
+						<div class="rating">
+							<div class="rating-prc" itemscope="itemscope" itemprop="aggregateRating"
+								itemtype="//schema.org/AggregateRating">
+								<meta itemprop="worstRating" content="1">
+								<meta itemprop="bestRating" content="10">
+								<meta itemprop="ratingCount" content="10">
+								<div class="rtp">
+									<div class="rtb"><span style="width:{{ comic.ratings * 10 }}%"></span></div>
+								</div>
+								<div class="num" itemprop="ratingValue" content="{{ comic.ratings }}">{{ comic.ratings }}</div>
+							</div>
+						</div>
+						<div class="tsinfo">
+							<div class="imptdt">
+								Status <i>{{ comic.status }}</i>
+							</div>
+							<div class="imptdt">
+								<!-- URL For Comics With TYPE PARAMETER -->
+								Type <a href="{{ url_for('comics', type=comic.type) }}">{{ comic.type }}</a>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="infox">
+					<h1 class="entry-title" itemprop="name">{{ comic.title }}</h1>
+					<div class='socialts'>
+						<a href="https://www.facebook.com/sharer/sharer.php?u=https://www.manhuareads.com/comic/{{ comic.title }}/&amp;t={{ comic.title }}"
+							target="_blank" class="fb">
+							<i class="fab fa-facebook-f"></i>
+							<span>Facebook</span>
+						</a>
+						<a href="https://www.twitter.com/intent/tweet?url=https://www.manhuareads.com/comic/{{ comic.title }}/&amp;text={{ comic.title }}"
+							target="_blank" class="twt">
+							<i class="fab fa-twitter"></i>
+							<span>Twitter</span>
+						</a>
+						<a href="whatsapp://send?text={{ comic.title }} https://www.manhuareads.com/comic/{{ comic.title }}/"
+							target="_blank" class="wa">
+							<i class="fab fa-whatsapp"></i>
+							<span>WhatsApp</span>
+						</a>
+						<a href="https://pinterest.com/pin/create/button/?url=https://www.manhuareads.com/comic/{{ comic.title }}/&amp;media=https://www.manhuareads.com/{{ comic.image_link }}&amp;description={{ comic.title }}"
+							target="_blank" class="pntrs">
+							<i class="fab fa-pinterest-p"></i>
+							<span>Pinterest</span>
+						</a>
+					</div>
+					<div class="wd-full">
+						{% if comic.alternative_titles != False  or comic.alternative_titles != '' %}
+						<b>Alternative Titles</b>
+						<span>{{ comic.alternative_titles }}</span>
+						{% else %}
+						<span>-</span>
+						{% endif %}
+					</div>
+					<div class="wd-full">
+						<h2>Synopsis: {{ comic.title }}</h2>
+						<div class="entry-content entry-content-single" itemprop="description">
+							<p>
+								{{ comic.description }}
+							</p>
+						</div>
+					</div>
+					<div class="flex-wrap">
+						<div class="fmed">
+							<b>Released</b>
+							<span>
+								{{ comic.releasesd }} </span>
+						</div>
+						<div class="fmed">
+							<b>Author</b>
+							<span>
+								{{ comic.author }} </span>
+						</div>
+					</div>
+					{% if comic.artist == True or comic.artist != '' %}
+					<div class="flex-wrap">
+						<div class="fmed">
+							<b>Artist</b>
+							<span>
+								{{ comic.artist }} </span>
+						</div>
+					</div>
+					{% else %}
+					{% endif %}
+					<div class="flex-wrap">
+						<div class="fmed">
+							<b>Serialization</b>
+							<span>
+								{% if comic.serialization %}{{ comic.serialization }}
+								{% else %}
+								-
+								{% endif %}	
+							</span>
+						</div>
+						<div class="fmed">
+							<b>Posted By</b>
+							<span itemprop="author" itemscope itemtype="https://schema.org/Person" class="author vcard">
+								<i itemprop="name">
+									{% if comic.posted_by %}{{ comic.posted_by }}
+									{% else %}
+									-
+									{% endif %}	</i>
+							</span>
+						</div>
+					</div>
+					<div class="flex-wrap">
+						<div class="fmed">
+							<b>Posted On</b>
+							<span>
+								<time itemprop="datePublished" datetime="{{ comic.posted_on }}"></time>
+							</span>
+						</div>
+						<div class="fmed">
+							<b>Updated On</b>
+							<span>
+								<time itemprop="dateModified" datetime="{{ comic.updated_on }}"></time>
+							</span>
+						</div>
+					</div>
+					<div class="wd-full"><b>Genres</b><span class="mgen">{% for genre in comic.genres %}
+						<a href="{{ url_for('genres', genre_title=genre.name.lower()) }}"
+							rel="tag">{{ genre.name }}</a> {% endfor %}</span></div>
+				</div>
+			</div>
+			<div class="bottom">
+				<strong>Keywords: </strong> {{ comic.keywords }}
+			</div>
+		</div>
+		<div class="bixbox bxcl epcheck">
+			<div class="releases">
+				<h2>Chapters: {{ comic.title }}</h2>
+			</div>
+			<div class="lastend">
+				<div class="inepcx">
+					<a href="{{ url_for('comic_chapter', comic_title=comic.title, chapter_num=comic.first_chapter) }}">
+						<span>First Chapter</span>
+						<span class="epcur epcurfirst">Chapter {{ comic.first_chapter }}</span>
+					</a>
+				</div>
+				<div class="inepcx">
+					<a href="{{ url_for('comic_chapter', comic_title=comic.title, chapter_num=comic.last_chapter) }}">
+						<span>Latest Chapter</span>
+						<span class="epcur epcurlast">Chapter {{ comic.last_chapter }}</span>
+					</a>
+				</div>
+			</div>
+			<div class="search-chapter">
+				<input id="searchchapter" type="text" placeholder="Search For Chapter. Example: 7 or 59"
+					autocomplete="off">
+			</div>
+			<div class="eplister" id="chapterlist">
+				<ul class="clstyle">
+					{% for chapter in comic.chapters|reverse %}
+					<li data-num="{{ chapter.num }}">
+						<div class="chbox">
+							<div class="eph-num">
+								<a href="{{ url_for('comic_chapter', comic_title=comic.title, chapter_num=chapter.num) }}">
+									<span class="chapternum">Chapter {{ chapter.num }}</span>
+									<span class="chapterdate">{{ chapter.release }}</span>
+								</a>
+							</div>
+						</div>
+					</li>
+					{% endfor %}
+				</ul>
+			</div>
+		</div>
+		<script>
+			var chapterSearchNotFound = "No Chapter Found";
+			series_chapters.setFirstChapterData();
+			series_chapters.controlSearchInput();
+
+		</script>
+		<div id="comments" class="bixbox comments-area">
+			<div class="releases">
+				<h2><span>Comment</span></h2>
+			</div>
+			<div class="cmt commentx">
+				<div id="comments" class="comments-area">
+					<div id="disqus_thread"></div>
+
+					<!-- <script defer>
+						var disqus_config = function () {
+							this.page.url = "index.html";
+							this.page.identifier = "22539%20https_/www.asurascans.com/indexf2ba.html?post_type=manga&amp;p=22539";
+							this.page.title = "The Max Level Hero has Returned!";
+						};
+						(function () {
+							var d = document, s = d.createElement('script');
+							s.src = '../../../asurascans-com-1.disqus.com/embed.js';
+							s.defer = 'defer';
+							s.setAttribute('data-timestamp', +new Date());
+							(d.head || d.body).appendChild(s);
+						})();
+					</script> -->
+					<noscript>Please enable JavaScript to view comments powered by Disqus.</noscript>
+				</div>
+			</div>
+		</div>
+		<div class="bixbox">
+			<div class="releases">
+				<h2><span>Related Series</span></h2>
+			</div>
+			<div class="listupd">
+				{% for item in related %}
+				<div class="bs">
+					<div class="bsx">
+						<a href="{{ url_for('comic', comic_title=item.title) }}"
+							title="{{ item.title }}">
+							<div class="limit">
+								<div class="ply"></div>
+								{% if item.status =='Dropped' %}
+								<span class="status Dropped">Dropped</span>
+								{% else %}
+								{% endif %}
+								<span class="type {{ item.type }}">{{ item.type }}</span> <img
+									src="{{ item.image_link }}"
+									class="ts-post-image wp-post-image attachment-medium size-medium"
+									loading="lazy" />
+							</div>
+							<div class="bigor">
+								<div class="tt">
+									{{ item.title }} </div>
+								<div class="adds">
+									<div class="epxs">Chapter 22</div>
+									<div class="rt">
+										<div class="rating">
+											<div class="rating-prc">
+												<div class="rtp">
+													<div class="rtb"><span style="width: {{ item.ratings * 10 }}%"></span></div>
+												</div>
+											</div>
+											<div class="numscore">{{ item.ratings }}</div>
+										</div>
+									</div>
+								</div>
+							</div>
+						</a>
+					</div>
+				</div>
+				{% endfor %}
+			</div>
+		</div>
+		<span style="display: none;" itemprop="publisher" itemscope itemtype="https://schema.org/Organization">
+			<span style="display: none;" itemprop="logo" itemscope itemtype="https://schema.org/ImageObject">
+				<meta itemprop="url" content="../../wp-content/uploads/2021/03/Group_1.png">
+			</span>
+			<meta itemprop="name" content="Asura Scans">
+		</span>
+	</article>
+</div>
+<script>jQuery(document).ready(function () { jQuery.ajax({ url: ajaxurl, type: 'post', data: { action: 'dynamic_view_ajax', post_id: 22539 }, success: function (response) { } }); });</script>
+<div id="sidebar">
+	<div class="section">
+		<div class="releases">
+			<h3>Popular</h3>
+		</div>
+		<div class="ts-wpop-series-gen">
+			<ul class="ts-wpop-nav-tabs">
+				<li class="active"><a class="ts-wpop-tab" data-range="weekly">Weekly</a></li>
+				<li><a class="ts-wpop-tab" data-range="monthly">Monthly</a></li>
+				<li><a class="ts-wpop-tab" data-range="alltime">All</a></li>
+			</ul>
+		</div>
+		<div id="wpop-items">
+			<div class='serieslist pop wpop wpop-weekly'>
+				<ul>
+					{% for item in popular %}
+					<li>
+						<div class="ctr">{{ loop.count }}</div>
+						<div class="imgseries">
+							<a class="series"
+								href="{{ url_for('comic', comic_title=item.title) }}"
+								rel="121231">
+								<img src="{{ url_for('static', filename=item.image_link) }}"
+									class="ts-post-image wp-post-image attachment-medium size-medium"
+									loading="lazy" /> </a>
+						</div>
+						<div class="leftseries">
+							<h2>
+								<a class="series"
+									href="{{ url_for('comic', comic_title=item.title) }}"
+									rel="121231">{{ item.title }}</a>
+							</h2>
+							<span><b>Genres</b>: {% for genre in item.genres %}
+								<a href="{{ url_for('genres', genre_title=genre.name.lower()) }}"
+									rel="tag">{{ genre.name }}</a>,{% endfor %} </span>
+							<div class="rt">
+								<div class="rating">
+									<div class="rating-prc">
+										<div class="rtp">
+											<div class="rtb"><span style="width:{{ item.ratings * 10 }}%"></span></div>
+										</div>
+									</div>
+									<div class="numscore">{{ item.ratings }}</div>
+								</div>
+							</div>
+						</div>
+					</li>
+					{% endfor %}
+				</ul>
+			</div>
+			<div class='serieslist pop wpop wpop-monthly'>
+				<ul>
+					{% for item in monthly %}<b>{{ loop.count }}</b>
+					<li>
+						<div class="ctr">1</div>
+						<div class="imgseries">
+							<a class="series"
+								href="{{ url_for('comic', comic_title=item.title) }}" rel="40871">
+								<img src="{{ url_for('static', filename=item.image_link) }}"
+									class="ts-post-image wp-post-image attachment-medium size-medium"
+									loading="lazy" /> </a>
+						</div>
+						<div class="leftseries">
+							<h2>
+								<a class="series"
+									href="{{ url_for('comic', comic_title=item.title) }}"
+									rel="40871">{{ item.title }}</a>
+							</h2>
+							<span><b>Genres</b>: {% for genre in item.genres %}
+								<a href="{{ url_for('genres', genre_title=genre.name.lower()) }}"
+									rel="tag">{{ genre.name }}</a>, {% endfor %}</span>
+							<div class="rt">
+								<div class="rating">
+									<div class="rating-prc">
+										<div class="rtp">
+											<div class="rtb"><span style="width: {{ item.ratings * 10 }}%"></span></div>
+										</div>
+									</div>
+									<div class="numscore">{{ item.ratings }}</div>
+								</div>
+							</div>
+						</div>
+					</li>
+					{% endfor %}
+				</ul>
+			</div>
+			<div class='serieslist pop wpop wpop-alltime'>
+				<ul>
+					{% for item in alltime %}
+					<li>
+						<div class="ctr">1</div>
+						<div class="imgseries">
+							<a class="series"
+								href="{{ url_for('comic', comic_title=item.title) }}" rel="40871">
+								<img src="{{ url_for('static', filename=item.image_link) }}"
+									class="ts-post-image wp-post-image attachment-medium size-medium"
+									loading="lazy" /> </a>
+						</div>
+						<div class="leftseries">
+							<h2>
+								<a class="series"
+									href="{{ url_for('comic', comic_title=item.title) }}"
+									rel="40871">{{ item.title }}</a>
+							</h2>
+							<span><b>Genres</b>: {% for genre in item.genres %}
+								<a href="{{ url_for('genres', genre_title=genre.name.lower()) }}"
+									rel="tag">{{ genre.name }}</a>, {% endfor %}</span>
+							<div class="rt">
+								<div class="rating">
+									<div class="rating-prc">
+										<div class="rtp">
+											<div class="rtb"><span style="width:{{ item.ratings * 10}}%"></span></div>
+										</div>
+									</div>
+									<div class="numscore">{{ item.ratings }}</div>
+								</div>
+							</div>
+						</div>
+					</li>
+					{% endfor %}
+				</ul>
+			</div>
+		</div>
+	</div>
+	<script>ts_popular_widget.run(1661208919);</script>
+</div>
+{% endblock %}

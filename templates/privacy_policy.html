@@ -1,0 +1,211 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="postbody">
+    <div class="bixbox">
+        <div class="releases">
+            <h1><span>Privacy Policy</span></h1>
+        </div>
+        <div class="page">
+            <div class="code-block code-block-21"
+                style="margin: 8px auto; text-align: center; display: block; clear: both;">
+
+                <div class="asurascans.rights">
+                    <img src="https://www.asurascans.com/wp-content/uploads/2021/04/page100-10.jpg"
+                        style="display: none;" width="1142" height="1348" class="alignnone size-full asurascans"
+                        alt="asura scans manhwa comic">
+                </div>
+            </div>
+            <div class="p mrg">
+                <h1>Privacy Policy</h1>
+                <h3>Privacy Policy</h3>
+                <p>The following web pages outline asurascans.com’s collection and use of personal information from its
+                    users. asurascans.com values the privacy of our members and users. asurascans.com will never share
+                    any personal information of anybody who logs on to asurascans.com with anyone. This includes your
+                    e-mail address, name, and location. Upon logging on to asurascans.com, your IP address and hostname
+                    are logged for statistical and security reasons.</p>
+                <h3>Security</h3>
+                <p>asurascans.com will make a reasonable effort to protect all personal information such as passwords
+                    and use technology such as encryption, access control procedures, firewalls, and physical
+                    securities. We recommend you use a unique password with both letters and numbers to protect your
+                    account on asurascans.com. If others, including family, friends, or other household members access
+                    and use the comment or message board through your login credentials, you are responsible for the
+                    actions of yourself and your individual account. Only in extreme cases will your account be fully
+                    terminated.</p>
+                <h3>Cookies</h3>
+                <p>asurascans.com uses cookies (a very small text file placed on your system when you log on to
+                    asurascans.com, and most other websites) to serve as an identification card and is uniquely yours.
+                    It can only be read by the server that gives this cookie to you. Cookies give us information that
+                    you returned to asurascans.com’s specific pages and help us track your preferences and your
+                    behavior. The basic function of cookies is to help our server remember who you are.</p>
+                <h3>Disclosing Information</h3>
+                <p>When required by applicable law, asurascans.com may store and disclose personal information for the
+                    members of the website. This means that we may make a disclosure that is necessary for the legal and
+                    regulatory requirements to protect the rights, safety, and property of asurascans.com, users of the
+                    asurascans.com website, and the public.</p>
+                <h3>Children’s Privacy</h3>
+                <p>asurascans.com makes a reasonable effort to prevent someone who is underage to join as a member.
+                    asurascans.com also will not collect information and personal data from children under the age of
+                    13. If there is someone under the age of 13 to become a member of asurascans.com, we will close that
+                    child’s account and delete any information collected about the child. Notwithstanding the foregoing,
+                    asurascans.com may choose to retain some personal information such as the underage’s e-mail address
+                    as a means to prevent the child from re-registering at our website. Since April 2000, the Children’s
+                    Online Privacy Protection Act (COPPA) went into effect, and as result websites all over the world
+                    wide web had to change the standards to not collect any information from a child.</p>
+                <h3>Third Parties</h3>
+                <p>Third-party websites may collect information from asurascans.com users. This information includes
+                    your IP Address, hostname, and information about your system to help us serve you better. They are
+                    functioned for statistical reasons, and will not be used for any other reasons. If you would like to
+                    know more about this practice and to know your options about not having this information used by
+                    these companies, you can see http://www.networkadvertising.org/managing/opt_out.asp.</p>
+                <h3>Website Policy Changes</h3>
+                <p>asurascans.com reserves the right to change this, and any other policy located on our website at any
+                    time without notifying our users. If you have any comments, questions, or concerns regarding this
+                    policy, or any other policy you may send them to us at policy[at]asurascans.com.</p>
+                <p>
+                    <script
+                        type="text/javascript">let optOutCounter = 0; function setCookie(cname, cvalue, exdays) { var d = new Date(); d.setTime(d.getTime() + (exdays * 24 * 60 * 60 * 1000)); var expires = 'expires=' + d.toUTCString(); document.cookie = cname + '=' + cvalue + ';' + expires + ';path=/'; if (optOutCounter == 0) { let cookieP = document.getElementById('cookieP'); var successCookie = document.createElement('h3'); successCookie.innerHTML = 'Optout Success!'; successCookie.setAttribute('style', 'color:green'); cookieP.appendChild(successCookie); optOutCounter++ } };</script>
+                </p>
+                <h3>Common ID Cookie</h3>
+                <p id="cookieP">This site uses cookies and similar tracking technologies such as the Common ID cookie to
+                    provide its services. Cookies are important devices for measuring advertising effectiveness and
+                    ensuring a robust online advertising industry. The Common ID cookie stores a unique user id in the
+                    first-party domain and is accessible to our ad partners. This simple ID can be utilized to improve
+                    user matching, especially for delivering ads to iOS and macOS browsers. Users can opt-out of the
+                    Common ID tracking cookie by clicking <a href="#opt-out">here</a>.</p>
+                <h3>Advertising Privacy Settings</h3>
+                <p>FOR EU USERS ONLY: When you use our site, pre-selected companies may access and use certain
+                    information on your device and about your interests to serve ads or personalized content. You may
+                    revisit or change consent choices at any time by clicking <a href="#cmp">here</a>.</p>
+            </div>
+
+        </div>
+    </div>
+</div>
+<div id="sidebar">
+    <div class="section">
+        <div class="releases">
+            <h3>Popular</h3>
+        </div>
+        <div class="ts-wpop-series-gen">
+            <ul class="ts-wpop-nav-tabs">
+                <li class="active"><a class="ts-wpop-tab" data-range="weekly">Weekly</a></li>
+                <li><a class="ts-wpop-tab" data-range="monthly">Monthly</a></li>
+                <li><a class="ts-wpop-tab" data-range="alltime">All</a></li>
+            </ul>
+        </div>
+        <div id="wpop-items">
+            <div class='serieslist pop wpop wpop-weekly'>
+                <ul>
+                    {% for item in popular %}
+                    <li>
+                        <div class="ctr">{{ loop.count }}</div>
+                        <div class="imgseries">
+                            <a class="series"
+                                href="{{ url_for('comic', comic_title=item.title) }}"
+                                rel="121231">
+                                <img src="{{ url_for('static', filename=item.image_link) }}"
+                                    class="ts-post-image wp-post-image attachment-medium size-medium"
+                                    loading="lazy" /> </a>
+                        </div>
+                        <div class="leftseries">
+                            <h2>
+                                <a class="series"
+                                    href="{{ url_for('comic', comic_title=item.title) }}"
+                                    rel="121231">{{ item.title }}</a>
+                            </h2>
+                            <span><b>Genres</b>: {% for genre in item.genres %}
+                                <a href="{{ url_for('genres', genre_title=genre.name.lower()) }}"
+                                    rel="tag">{{ genre.name }}</a>,{% endfor %} </span>
+                            <div class="rt">
+                                <div class="rating">
+                                    <div class="rating-prc">
+                                        <div class="rtp">
+                                            <div class="rtb"><span style="width:{{ item.ratings * 10 }}%"></span></div>
+                                        </div>
+                                    </div>
+                                    <div class="numscore">{{ item.ratings }}</div>
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+                    {% endfor %}
+                </ul>
+            </div>
+            <div class='serieslist pop wpop wpop-monthly'>
+                <ul>
+                    {% for item in monthly %}<b>{{ loop.count }}</b>
+                    <li>
+                        <div class="ctr">1</div>
+                        <div class="imgseries">
+                            <a class="series"
+                                href="{{ url_for('comic', comic_title=item.title) }}" rel="40871">
+                                <img src="{{ url_for('static', filename=item.image_link) }}"
+                                    class="ts-post-image wp-post-image attachment-medium size-medium"
+                                    loading="lazy" /> </a>
+                        </div>
+                        <div class="leftseries">
+                            <h2>
+                                <a class="series"
+                                    href="{{ url_for('comic', comic_title=item.title) }}"
+                                    rel="40871">{{ item.title }}</a>
+                            </h2>
+                            <span><b>Genres</b>: {% for genre in item.genres %}
+                                <a href="{{ url_for('genres', genre_title=genre.name.lower()) }}"
+                                    rel="tag">{{ genre.name }}</a>, {% endfor %}</span>
+                            <div class="rt">
+                                <div class="rating">
+                                    <div class="rating-prc">
+                                        <div class="rtp">
+                                            <div class="rtb"><span style="width: {{ item.ratings * 10 }}%"></span></div>
+                                        </div>
+                                    </div>
+                                    <div class="numscore">{{ item.ratings }}</div>
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+                    {% endfor %}
+                </ul>
+            </div>
+            <div class='serieslist pop wpop wpop-alltime'>
+                <ul>
+                    {% for item in alltime %}
+                    <li>
+                        <div class="ctr">1</div>
+                        <div class="imgseries">
+                            <a class="series"
+                                href="{{ url_for('comic', comic_title=item.title) }}" rel="40871">
+                                <img src="{{ url_for('static', filename=item.image_link) }}"
+                                    class="ts-post-image wp-post-image attachment-medium size-medium"
+                                    loading="lazy" /> </a>
+                        </div>
+                        <div class="leftseries">
+                            <h2>
+                                <a class="series"
+                                    href="{{ url_for('comic', comic_title=item.title) }}"
+                                    rel="40871">{{ item.title }}</a>
+                            </h2>
+                            <span><b>Genres</b>: {% for genre in item.genres %}
+                                <a href="{{ url_for('genres', genre_title=genre.name.lower()) }}"
+                                    rel="tag">{{ genre.name }}</a>, {% endfor %}</span>
+                            <div class="rt">
+                                <div class="rating">
+                                    <div class="rating-prc">
+                                        <div class="rtp">
+                                            <div class="rtb"><span style="width:{{ item.ratings * 10}}%"></span></div>
+                                        </div>
+                                    </div>
+                                    <div class="numscore">{{ item.ratings }}</div>
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+                    {% endfor %}
+                </ul>
+            </div>
+        </div>
+    </div>
+    <script>ts_popular_widget.run(1661208919);</script>
+</div>
+{% endblock %}

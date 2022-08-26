@@ -1,0 +1,444 @@
+{% extends 'base.html' %}
+{% block content %}
+			<div class="postbody">
+				<div class="bixbox">
+					<div class="releases">
+						<h1>Manga Lists</h1>
+					</div>
+					<div class="mrgn">
+						<div class="advancedsearch">
+							<div class="quickfilter">
+								<form action="https://www.asurascans.com/manga" class="filters " method="GET">
+									<div class="filter dropdown">
+										<button type="button" class="dropdown-toggle" data-toggle="dropdown"> Genre
+											<span id="filtercount">All</span> <i class="fa fa-angle-down"
+												aria-hidden="true"></i> </button>
+										<ul class="dropdown-menu c4 genrez">
+											<li><input type="checkbox" id="genre-action" name="genre[]" value="action">
+												<label for="genre-action">Action</label></li>
+											<li><input type="checkbox" id="genre-adaptation" name="genre[]"
+													value="adaptation"> <label for="genre-adaptation">Adaptation</label>
+											</li>
+											<li><input type="checkbox" id="genre-adult" name="genre[]" value="adult">
+												<label for="genre-adult">Adult</label></li>
+											<li><input type="checkbox" id="genre-adventure" name="genre[]"
+													value="adventure"> <label for="genre-adventure">Adventure</label>
+											</li>
+											<li><input type="checkbox" id="genre-another-chance" name="genre[]"
+													value="another-chance"> <label for="genre-another-chance">Another
+													chance</label></li>
+											<li><input type="checkbox" id="genre-apocalypse" name="genre[]"
+													value="apocalypse"> <label for="genre-apocalypse">apocalypse</label>
+											</li>
+											<li><input type="checkbox" id="genre-comedy" name="genre[]" value="comedy">
+												<label for="genre-comedy">Comedy</label></li>
+											<li><input type="checkbox" id="genre-coming-soon" name="genre[]"
+													value="coming-soon"> <label for="genre-coming-soon">Coming
+													Soon</label></li>
+											<li><input type="checkbox" id="genre-cultivation" name="genre[]"
+													value="cultivation"> <label
+													for="genre-cultivation">Cultivation</label></li>
+											<li><input type="checkbox" id="genre-demon" name="genre[]" value="demon">
+												<label for="genre-demon">Demon</label></li>
+											<li><input type="checkbox" id="genre-discord" name="genre[]"
+													value="discord"> <label for="genre-discord">Discord</label></li>
+											<li><input type="checkbox" id="genre-drama" name="genre[]" value="drama">
+												<label for="genre-drama">Drama</label></li>
+											<li><input type="checkbox" id="genre-dungeons" name="genre[]"
+													value="dungeons"> <label for="genre-dungeons">Dungeons</label></li>
+											<li><input type="checkbox" id="genre-ecchi" name="genre[]" value="ecchi">
+												<label for="genre-ecchi">Ecchi</label></li>
+											<li><input type="checkbox" id="genre-fantasy" name="genre[]"
+													value="fantasy"> <label for="genre-fantasy">Fantasy</label></li>
+											<li><input type="checkbox" id="genre-game" name="genre[]" value="game">
+												<label for="genre-game">Game</label></li>
+											<li><input type="checkbox" id="genre-genius" name="genre[]" value="genius">
+												<label for="genre-genius">Genius</label></li>
+											<li><input type="checkbox" id="genre-genius-mc" name="genre[]"
+													value="genius-mc"> <label for="genre-genius-mc">Genius MC</label>
+											</li>
+											<li><input type="checkbox" id="genre-harem" name="genre[]" value="harem">
+												<label for="genre-harem">Harem</label></li>
+											<li><input type="checkbox" id="genre-hero" name="genre[]" value="hero">
+												<label for="genre-hero">Hero</label></li>
+											<li><input type="checkbox" id="genre-historical" name="genre[]"
+													value="historical"> <label for="genre-historical">Historical</label>
+											</li>
+											<li><input type="checkbox" id="genre-isekai" name="genre[]" value="isekai">
+												<label for="genre-isekai">Isekai</label></li>
+											<li><input type="checkbox" id="genre-josei" name="genre[]" value="josei">
+												<label for="genre-josei">Josei</label></li>
+											<li><input type="checkbox" id="genre-kool-kids" name="genre[]"
+													value="kool-kids"> <label for="genre-kool-kids">Kool Kids</label>
+											</li>
+											<li><input type="checkbox" id="genre-loli" name="genre[]" value="loli">
+												<label for="genre-loli">Loli</label></li>
+											<li><input type="checkbox" id="genre-magic" name="genre[]" value="magic">
+												<label for="genre-magic">Magic</label></li>
+											<li><input type="checkbox" id="genre-martial-arts" name="genre[]"
+													value="martial-arts"> <label for="genre-martial-arts">Martial
+													Arts</label></li>
+											<li><input type="checkbox" id="genre-mature" name="genre[]" value="mature">
+												<label for="genre-mature">Mature</label></li>
+											<li><input type="checkbox" id="genre-mecha" name="genre[]" value="mecha">
+												<label for="genre-mecha">Mecha</label></li>
+											<li><input type="checkbox" id="genre-modern-setting" name="genre[]"
+													value="modern-setting"> <label for="genre-modern-setting">Modern
+													Setting</label></li>
+											<li><input type="checkbox" id="genre-monsters" name="genre[]"
+													value="monsters"> <label for="genre-monsters">Monsters</label></li>
+											<li><input type="checkbox" id="genre-murim" name="genre[]" value="murim">
+												<label for="genre-murim">Murim</label></li>
+											<li><input type="checkbox" id="genre-mystery" name="genre[]"
+													value="mystery"> <label for="genre-mystery">Mystery</label></li>
+											<li><input type="checkbox" id="genre-necromancer" name="genre[]"
+													value="necromancer"> <label
+													for="genre-necromancer">Necromancer</label></li>
+											<li><input type="checkbox" id="genre-noble" name="genre[]" value="noble">
+												<label for="genre-noble">Noble</label></li>
+											<li><input type="checkbox" id="genre-overpowered" name="genre[]"
+													value="overpowered"> <label
+													for="genre-overpowered">Overpowered</label></li>
+											<li><input type="checkbox" id="genre-pets" name="genre[]" value="pets">
+												<label for="genre-pets">Pets</label></li>
+											<li><input type="checkbox" id="genre-post-apocalyptic" name="genre[]"
+													value="post-apocalyptic"> <label
+													for="genre-post-apocalyptic">Post-Apocalyptic</label></li>
+											<li><input type="checkbox" id="genre-psychological" name="genre[]"
+													value="psychological"> <label
+													for="genre-psychological">Psychological</label></li>
+											<li><input type="checkbox" id="genre-rebirth" name="genre[]"
+													value="rebirth"> <label for="genre-rebirth">Rebirth</label></li>
+											<li><input type="checkbox" id="genre-reincarnation" name="genre[]"
+													value="reincarnation"> <label
+													for="genre-reincarnation">Reincarnation</label></li>
+											<li><input type="checkbox" id="genre-return" name="genre[]" value="return">
+												<label for="genre-return">Return</label></li>
+											<li><input type="checkbox" id="genre-returned" name="genre[]"
+													value="returned"> <label for="genre-returned">Returned</label></li>
+											<li><input type="checkbox" id="genre-returner" name="genre[]"
+													value="returner"> <label for="genre-returner">Returner</label></li>
+											<li><input type="checkbox" id="genre-revenge" name="genre[]"
+													value="revenge"> <label for="genre-revenge">Revenge</label></li>
+											<li><input type="checkbox" id="genre-romance" name="genre[]"
+													value="romance"> <label for="genre-romance">Romance</label></li>
+											<li><input type="checkbox" id="genre-school-life" name="genre[]"
+													value="school-life"> <label for="genre-school-life">School
+													Life</label></li>
+											<li><input type="checkbox" id="genre-sci-fi" name="genre[]" value="sci-fi">
+												<label for="genre-sci-fi">Sci-fi</label></li>
+											<li><input type="checkbox" id="genre-seinen" name="genre[]" value="seinen">
+												<label for="genre-seinen">Seinen</label></li>
+											<li><input type="checkbox" id="genre-shoujo" name="genre[]" value="shoujo">
+												<label for="genre-shoujo">Shoujo</label></li>
+											<li><input type="checkbox" id="genre-shounen" name="genre[]"
+													value="shounen"> <label for="genre-shounen">Shounen</label></li>
+											<li><input type="checkbox" id="genre-slice-of-life" name="genre[]"
+													value="slice-of-life"> <label for="genre-slice-of-life">Slice of
+													Life</label></li>
+											<li><input type="checkbox" id="genre-sports" name="genre[]" value="sports">
+												<label for="genre-sports">Sports</label></li>
+											<li><input type="checkbox" id="genre-super-hero" name="genre[]"
+													value="super-hero"> <label for="genre-super-hero">Super Hero</label>
+											</li>
+											<li><input type="checkbox" id="genre-superhero" name="genre[]"
+													value="superhero"> <label for="genre-superhero">Superhero</label>
+											</li>
+											<li><input type="checkbox" id="genre-supernatural" name="genre[]"
+													value="supernatural"> <label
+													for="genre-supernatural">Supernatural</label></li>
+											<li><input type="checkbox" id="genre-survival" name="genre[]"
+													value="survival"> <label for="genre-survival">Survival</label></li>
+											<li><input type="checkbox" id="genre-suspense" name="genre[]"
+													value="suspense"> <label for="genre-suspense">Suspense</label></li>
+											<li><input type="checkbox" id="genre-system" name="genre[]" value="system">
+												<label for="genre-system">System</label></li>
+											<li><input type="checkbox" id="genre-thriller" name="genre[]"
+													value="thriller"> <label for="genre-thriller">Thriller</label></li>
+											<li><input type="checkbox" id="genre-time-travel" name="genre[]"
+													value="time-travel"> <label for="genre-time-travel">Time
+													Travel</label></li>
+											<li><input type="checkbox" id="genre-time-travel-future" name="genre[]"
+													value="time-travel-future"> <label
+													for="genre-time-travel-future">Time Travel (Future)</label></li>
+											<li><input type="checkbox" id="genre-tower" name="genre[]" value="tower">
+												<label for="genre-tower">tower</label></li>
+											<li><input type="checkbox" id="genre-tragedy" name="genre[]"
+													value="tragedy"> <label for="genre-tragedy">Tragedy</label></li>
+											<li><input type="checkbox" id="genre-video-game" name="genre[]"
+													value="video-game"> <label for="genre-video-game">Video Game</label>
+											</li>
+											<li><input type="checkbox" id="genre-video-games" name="genre[]"
+													value="video-games"> <label for="genre-video-games">Video
+													Games</label></li>
+											<li><input type="checkbox" id="genre-villain" name="genre[]"
+													value="villain"> <label for="genre-villain">Villain</label></li>
+											<li><input type="checkbox" id="genre-virtual-game" name="genre[]"
+													value="virtual-game"> <label for="genre-virtual-game">Virtual
+													Game</label></li>
+											<li><input type="checkbox" id="genre-virtual-reality" name="genre[]"
+													value="virtual-reality"> <label for="genre-virtual-reality">Virtual
+													Reality</label></li>
+											<li><input type="checkbox" id="genre-virtual-world" name="genre[]"
+													value="virtual-world"> <label for="genre-virtual-world">Virtual
+													World</label></li>
+											<li><input type="checkbox" id="genre-webtoon" name="genre[]"
+													value="webtoon"> <label for="genre-webtoon">Webtoon</label></li>
+											<li><input type="checkbox" id="genre-wuxia" name="genre[]" value="wuxia">
+												<label for="genre-wuxia">Wuxia</label></li>
+										</ul>
+									</div>
+									<div class="filter dropdown">
+										<button type="button" class="dropdown-toggle" data-toggle="dropdown"> Status
+											<span id="filtercount">All</span> <i class="fa fa-angle-down"
+												aria-hidden="true"></i></button>
+										<ul class="dropdown-menu c1">
+											<li> <input type="radio" id="anime_status-all" name="status" value=""
+													checked=""> <label for="anime_status-all">All</label></li>
+											<li> <input type="radio" id="anime_status-ongoing" name="status"
+													value="ongoing"> <label for="anime_status-ongoing">Ongoing</label>
+											</li>
+											<li> <input type="radio" id="anime_status-completed" name="status"
+													value="completed"> <label
+													for="anime_status-completed">Completed</label></li>
+											<li> <input type="radio" id="anime_status-hiatus" name="status"
+													value="hiatus"> <label for="anime_status-hiatus">Hiatus</label></li>
+											<li> <input type="radio" id="anime_status-dropped" name="status"
+													value="dropped"> <label for="anime_status-dropped">Dropped</label>
+											</li>
+											<li> <input type="radio" id="anime_status-coming soon" name="status"
+													value="coming soon"> <label for="anime_status-coming soon">Coming
+													Soon</label></li>
+										</ul>
+									</div>
+									<div class="filter dropdown">
+										<button type="button" class="dropdown-toggle" data-toggle="dropdown"> Type <span
+												id="filtercount">All</span> <i class="fa fa-angle-down"
+												aria-hidden="true"></i></button>
+										<ul class="dropdown-menu c1">
+											<li> <input type="radio" id="type-all" name="type" value="" checked="">
+												<label for="type-all">All</label></li>
+											<li><input type="radio" id="type-manga" name="type" value="manga"><label
+													for="type-manga">Manga</label></li>
+											<li><input type="radio" id="type-manhwa" name="type" value="manhwa"><label
+													for="type-manhwa">Manhwa</label></li>
+											<li><input type="radio" id="type-manhua" name="type" value="manhua"><label
+													for="type-manhua">Manhua</label></li>
+											<li><input type="radio" id="type-comic" name="type" value="comic"><label
+													for="type-comic">Comic</label></li>
+											<li><input type="radio" id="type-novel" name="type" value="novel"><label
+													for="type-novel">Novel</label></li>
+										</ul>
+									</div>
+									<div class="filter dropdown">
+										<button type="button" class="dropdown-toggle" data-toggle="dropdown"> Order by
+											<span id="filtercount">Default</span> <i class="fa fa-angle-down"
+												aria-hidden="true"></i></button>
+										<ul class="dropdown-menu c1">
+											<li> <input type="radio" id="sort_by-" name="order" value=""> <label
+													for="sort_by-">Default</label></li>
+											<li> <input type="radio" id="sort_by-name_a-z" name="order" value="title">
+												<label for="sort_by-name_a-z">A-Z</label></li>
+											<li> <input type="radio" id="sort_by-name_z-a" name="order"
+													value="titlereverse"> <label for="sort_by-name_z-a">Z-A</label></li>
+											<li> <input type="radio" id="sort_by-update" name="order" value="update"
+													checked=""> <label for="sort_by-update">Update</label></li>
+											<li> <input type="radio" id="sort_by-added" name="order" value="latest">
+												<label for="sort_by-added">Added</label></li>
+											<li> <input type="radio" id="sort_by-popular" name="order" value="popular">
+												<label for="sort_by-popular">Popular</label></li>
+										</ul>
+									</div>
+									<div class="filter submit"> <button type="submit" class="btn btn-custom-search"><i
+												class="fa fa-search" aria-hidden="true"></i> Search</button></div>
+								</form>
+							</div>
+							<div class="clear"></div>
+						</div>
+						<div class="other-opts">
+							<div class="modex">
+								<a href="{{ url_for('list_mode') }}">Text Mode</a>
+							</div>
+						</div>
+						<div class="clear"></div>
+						<div class="listupd">
+							{% for item in results.items %}
+                            <div class="bs">
+                                <div class="bsx">
+                                    <a href="{{ url_for('comic', comic_title=item.title) }}"
+                                        title="{{ item.title }}">
+                                        <div class="limit">
+                                            <div class="ply"></div>
+                                            {% if item.status == 'Dropped' %}
+                                            <span class="status Dropped">Dropped</span>
+                                            {% else %}
+                                            {% endif %}
+                                            <span class="type {{ item.type }}">{{ item.type }}</span> <img
+                                                src="{{ url_for('static', filename=item.image_link) }}"
+                                                class="ts-post-image wp-post-image attachment-medium size-medium"
+                                                loading="lazy" />
+                                        </div>
+                                        <div class="bigor">
+                                            <div class="tt">
+                                                {{ item.title }} </div>
+                                            <div class="adds">
+                                                <div class="epxs">Chapter {{ item.last_chapter }}</div>
+                                                <div class="rt">
+                                                    <div class="rating">
+                                                        <div class="rating-prc">
+                                                            <div class="rtp">
+                                                                <div class="rtb"><span style="width: {{ item.ratings * 10 }}%;"></span></div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="numscore">{{ item.ratings }}</div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </a>
+                                </div>
+                            </div>
+							{% endfor %}
+						</div>
+						<div class="hpage">
+							{% if results.has_prev %}
+								<a href="{% if request.args.get('type') != None %} {{ url_for('comics', page=results.prev_num, type=request.args.get('type'))}} {% else %} {{ url_for('comics', page=results.prev_num) }} {% endif %}" class="l">Previous <span
+									class="dashicons dashicons-arrow-left-alt2"></span></a>
+								{% endif %}
+							{% if results.has_next %}
+									<a href="{% if request.args.get('type') != None %} {{ url_for('comics', page=results.next_num, type=request.args.get('type')) }} {% else %} {{ url_for('comics', page=results.next_num) }} {% endif %}" class="r">Next <span
+										class="dashicons dashicons-arrow-right-alt2"></span></a>
+								{% endif %}
+							
+						</div>
+					</div>
+				</div>
+			</div>
+            <div id="sidebar">
+                <div class="section">
+                    <div class="releases">
+                        <h3>Popular</h3>
+                    </div>
+                    <div class="ts-wpop-series-gen">
+                        <ul class="ts-wpop-nav-tabs">
+                            <li class="active"><a class="ts-wpop-tab" data-range="weekly">Weekly</a></li>
+                            <li><a class="ts-wpop-tab" data-range="monthly">Monthly</a></li>
+                            <li><a class="ts-wpop-tab" data-range="alltime">All</a></li>
+                        </ul>
+                    </div>
+                    <div id="wpop-items">
+                        <div class='serieslist pop wpop wpop-weekly'>
+                            <ul>
+                                {% for item in popular %}
+                                <li>
+                                    <div class="ctr">{{ loop.count }}</div>
+                                    <div class="imgseries">
+                                        <a class="series"
+                                            href="{{ url_for('comic', comic_title=item.title) }}"
+                                            rel="121231">
+                                            <img src="{{ url_for('static', filename=item.image_link) }}"
+                                                class="ts-post-image wp-post-image attachment-medium size-medium"
+                                                loading="lazy" /> </a>
+                                    </div>
+                                    <div class="leftseries">
+                                        <h2>
+                                            <a class="series"
+                                                href="{{ url_for('comic', comic_title=item.title) }}"
+                                                rel="121231">{{ item.title }}</a>
+                                        </h2>
+                                        <span><b>Genres</b>: {% for genre in item.genres %}
+                                            <a href="{{ url_for('genres', genre_title=genre.name.lower()) }}"
+                                                rel="tag">{{ genre.name }}</a>,{% endfor %} </span>
+                                        <div class="rt">
+                                            <div class="rating">
+                                                <div class="rating-prc">
+                                                    <div class="rtp">
+                                                        <div class="rtb"><span style="width:{{ item.ratings * 10 }}%"></span></div>
+                                                    </div>
+                                                </div>
+                                                <div class="numscore">{{ item.ratings }}</div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </li>
+                                {% endfor %}
+                            </ul>
+                        </div>
+                        <div class='serieslist pop wpop wpop-monthly'>
+                            <ul>
+                                {% for item in monthly %}<b>{{ loop.count }}</b>
+                                <li>
+                                    <div class="ctr">1</div>
+                                    <div class="imgseries">
+                                        <a class="series"
+                                            href="{{ url_for('comic', comic_title=item.title) }}" rel="40871">
+                                            <img src="{{ url_for('static', filename=item.image_link) }}"
+                                                class="ts-post-image wp-post-image attachment-medium size-medium"
+                                                loading="lazy" /> </a>
+                                    </div>
+                                    <div class="leftseries">
+                                        <h2>
+                                            <a class="series"
+                                                href="{{ url_for('comic', comic_title=item.title) }}"
+                                                rel="40871">{{ item.title }}</a>
+                                        </h2>
+                                        <span><b>Genres</b>: {% for genre in item.genres %}
+                                            <a href="{{ url_for('genres', genre_title=genre.name.lower()) }}"
+                                                rel="tag">{{ genre.name }}</a>, {% endfor %}</span>
+                                        <div class="rt">
+                                            <div class="rating">
+                                                <div class="rating-prc">
+                                                    <div class="rtp">
+                                                        <div class="rtb"><span style="width: {{ item.ratings * 10 }}%"></span></div>
+                                                    </div>
+                                                </div>
+                                                <div class="numscore">{{ item.ratings }}</div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </li>
+                                {% endfor %}
+                            </ul>
+                        </div>
+                        <div class='serieslist pop wpop wpop-alltime'>
+                            <ul>
+                                {% for item in alltime %}
+                                <li>
+                                    <div class="ctr">1</div>
+                                    <div class="imgseries">
+                                        <a class="series"
+                                            href="{{ url_for('comic', comic_title=item.title) }}" rel="40871">
+                                            <img src="{{ url_for('static', filename=item.image_link) }}"
+                                                class="ts-post-image wp-post-image attachment-medium size-medium"
+                                                loading="lazy" /> </a>
+                                    </div>
+                                    <div class="leftseries">
+                                        <h2>
+                                            <a class="series"
+                                                href="{{ url_for('comic', comic_title=item.title) }}"
+                                                rel="40871">{{ item.title }}</a>
+                                        </h2>
+                                        <span><b>Genres</b>: {% for genre in item.genres %}
+                                            <a href="{{ url_for('genres', genre_title=genre.name.lower()) }}"
+                                                rel="tag">{{ genre.name }}</a>, {% endfor %}</span>
+                                        <div class="rt">
+                                            <div class="rating">
+                                                <div class="rating-prc">
+                                                    <div class="rtp">
+                                                        <div class="rtb"><span style="width:{{ item.ratings * 10}}%"></span></div>
+                                                    </div>
+                                                </div>
+                                                <div class="numscore">{{ item.ratings }}</div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </li>
+                                {% endfor %}
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <script>ts_popular_widget.run(1661208919);</script>
+            </div>
+			<script>$(".section .quickfilter").parent().remove()</script>
+{% endblock %}
